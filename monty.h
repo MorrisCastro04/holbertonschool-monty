@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+extern char **tokens;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,4 +36,9 @@ typedef struct instruction_s
 char *opcode;
 void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+void freeTokens(char **);
+char **getTokens(char *, char *);
+void push(stack_t **stack, unsigned int line_number, FILE *fd);
+void pall(stack_t **stack, unsigned int line_number, FILE *fd);
 #endif

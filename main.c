@@ -5,12 +5,14 @@
  * @argv: argument vector
  * Return: if sucess 0 otherwise 1
 */
+char **tokens = NULL;
 int main(int argc, char **argv)
 {
     char *cmd = NULL;
     size_t n = 0;
     FILE *fd;
     int lines, line_numbers = 0;
+    stack_t *stack;
 
     /*Check if the correct number of command-line arguments is provided*/
     if (argc != 2)
@@ -29,6 +31,11 @@ int main(int argc, char **argv)
     while ((lines = getline(&cmd, &n, fd)) > -1)
     {
         line_numbers++;
+        tokens = getTokens(cmd, " \n");
+        if (strcmp(tokens[0], "push") == 0)
+            push(&stack, line_numbers, fd);
+        else
+            pall(&stack, line_numbers, fd);
     }
     /*Close the file after reading all lines*/
     fclose(fd);
