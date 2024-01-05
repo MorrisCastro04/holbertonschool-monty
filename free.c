@@ -3,7 +3,7 @@
  * freeTokens - frees tokens
  * @tokens: pointer to a pointer char
  * Return: nothing
-*/
+ */
 void freeTokens(char **tokens)
 {
 	int i;
@@ -19,18 +19,18 @@ void freeTokens(char **tokens)
 	free(tokens);
 }
 /**
- * 
- * 
- * 
-*/
+ * free_stack - free the stack
+ * @stack: the structure to free
+ * Return: nothing
+ */
 void free_stack(stack_t *stack)
 {
-    stack_t *tmp;
+	stack_t *tmp;
 
-    while (stack != NULL)
-    {
-        tmp = stack;
-        stack = tmp->next;
-        free(tmp);
-    }
+	while (stack != NULL)
+	{
+		tmp = stack;
+		stack = tmp->next;
+		free(tmp);
+	}
 }
