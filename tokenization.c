@@ -8,7 +8,7 @@
 */
 char **getTokens(char *ptr, char *delim)
 {
-	char *token = NULL, **tokens;
+	char *token, **tokens = NULL;
 
 	int i = 0;
 

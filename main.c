@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	char *cmd = NULL;
 	size_t buffer = 0;
 	FILE *fd;
-	void (*valid_fun)(stack_t **, unsigned int, FILE *);
+	void (*valid_fun)(stack_t **, unsigned int, FILE *) = NULL;
 	stack_t *stack = NULL;
 
 	if (argc != 2)

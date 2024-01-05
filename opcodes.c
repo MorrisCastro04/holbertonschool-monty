@@ -10,10 +10,10 @@ void push(stack_t **stack, unsigned int line_number, FILE *fd)
 {
 	stack_t *new_stack;
 
-	if (stack == NULL)
+	if (stack == NULL || tokens[1] == NULL)
 	{
 		fclose(fd);
-		dprintf(STDERR_FILENO, "L%d: unknown instruction push integer", line_number);
+		dprintf(STDERR_FILENO, "L%d: unknown instruction push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	/*create space to the new stack*/
@@ -21,7 +21,13 @@ void push(stack_t **stack, unsigned int line_number, FILE *fd)
 	if (new_stack == NULL)
 	{
 		fclose(fd);
-		dprintf(STDERR_FILENO, "L%d: unknown instruction push integer", line_number);
+		dprintf(STDERR_FILENO, "L%d: unknown instruction push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+    if (isdigit(*tokens[1]) == 0)
+	{
+		fclose(fd);
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	/*change the number to a integer*/
