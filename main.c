@@ -30,11 +30,20 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 		tokens = getTokens(cmd, " \n");
+        if (tokens == NULL)
+        {
+            free(tokens);
+            continue;
+        }
 		valid_fun = get_opcode(tokens[0]);
 		valid_fun(&stack, line_number, fd);
+        free(cmd);
+        freeTokens(tokens);
 		cmd = NULL;
 		tokens = NULL;
 	}
+    free(cmd);
+    free_stack(stack);
 	fclose(fd);
 	exit(EXIT_SUCCESS);
 }

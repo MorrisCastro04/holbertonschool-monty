@@ -37,6 +37,7 @@ char *opcode;
 void (*f)(stack_t **stack, unsigned int line_number, FILE *);
 } instruction_t;
 
+void free_stack(stack_t *stack);
 void freeTokens(char **);
 char **getTokens(char *, char *);
 void (*get_opcode(char *cmd))(stack_t **, unsigned int, FILE *);
