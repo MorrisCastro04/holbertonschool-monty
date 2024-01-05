@@ -23,19 +23,16 @@ char **getTokens(char *ptr, char *delim)
     while (token)
     {
         /*create space to each token*/
-        tokens[i] = malloc(sizeof(char) * strlen(token) + 1);
+        tokens[i] = malloc(strlen(token) + 1);
         if (tokens[i] == NULL)
         {
             dprintf(STDERR_FILENO, "Error: malloc failed");
             exit(EXIT_FAILURE);
         }
-        tokens[i] = token;
+		strcpy(tokens[i], token);
         i++;
-        token = NULL;
-        /*go to the next token*/
-        token = strtok(NULL, delim);
+		token = strtok(NULL, delim);
     }
     tokens[i] = NULL;
-    free(token);
     return(tokens);
 }

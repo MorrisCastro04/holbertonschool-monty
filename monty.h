@@ -41,4 +41,9 @@ void freeTokens(char **);
 char **getTokens(char *, char *);
 void push(stack_t **stack, unsigned int line_number, FILE *fd);
 void pall(stack_t **stack, unsigned int line_number, FILE *fd);
+void pint(stack_t **stack, unsigned int line_number, FILE *fd);
+void pop(stack_t **stack, unsigned int line_number, FILE *fd);
+void swap(stack_t **stack, unsigned int line_number, FILE *fd);
+void add(stack_t **stack, unsigned int line_number, FILE *fd);
+
 #endif

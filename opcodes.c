@@ -31,6 +31,7 @@ void push(stack_t **stack, unsigned int line_number, FILE *fd)
     if (*stack != NULL)
         (*stack)->prev = new_stack;
     *stack = new_stack;
+
 }
 /**
  * 
