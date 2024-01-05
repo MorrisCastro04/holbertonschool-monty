@@ -4,6 +4,7 @@
  * pop - removes top node from stack
  * @stack: double pointer to head of stack
  * @line_number: line number of opcode
+ * @fd: file descriptor
  * Return: nothing
 */
 

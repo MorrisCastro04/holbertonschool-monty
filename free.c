@@ -1,20 +1,20 @@
 #include "monty.h"
 /**
- * 
- * 
- * 
- * 
+ * freeTokens - frees tokens
+ * @tokens: pointer to a pointer char
+ * Return: nothing
 */
 void freeTokens(char **tokens)
 {
-    int i;
+	int i;
 
 	if (tokens == NULL)
 		return;
 
-    for (i = 0; tokens[i] != NULL; i++)
+	for (i = 0; tokens[i] != NULL; i++)
 	{
-        free(tokens[i]);
+		free(tokens[i]);
 	}
-    free(tokens);
+
+	free(tokens);
 }

@@ -4,6 +4,7 @@
  * pint - prints the top value of the stack
  * @stack: double pointer to the head of stack
  * @line_number: line number of the opcode
+ * @fd: file descriptor
  * Return: returns nothing
 */
 
