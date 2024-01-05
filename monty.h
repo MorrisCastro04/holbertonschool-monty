@@ -34,16 +34,18 @@ struct stack_s *next;
 typedef struct instruction_s
 {
 char *opcode;
-void (*f)(stack_t **stack, unsigned int line_number);
+void (*f)(stack_t **stack, unsigned int line_number, FILE *);
 } instruction_t;
 
 void freeTokens(char **);
 char **getTokens(char *, char *);
+void (*get_opcode(char *cmd))(stack_t **, unsigned int, FILE *);
 void push(stack_t **stack, unsigned int line_number, FILE *fd);
 void pall(stack_t **stack, unsigned int line_number, FILE *fd);
 void pint(stack_t **stack, unsigned int line_number, FILE *fd);
 void pop(stack_t **stack, unsigned int line_number, FILE *fd);
 void swap(stack_t **stack, unsigned int line_number, FILE *fd);
 void add(stack_t **stack, unsigned int line_number, FILE *fd);
+void nop(stack_t **stack, unsigned int line_number, FILE *fd);
 
 #endif

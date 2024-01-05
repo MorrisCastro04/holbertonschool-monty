@@ -27,5 +27,3 @@ void add(stack_t **stack, unsigned int line_number, FILE *fd)
 	*stack = second;
 	free(top);
 }
-
-	
