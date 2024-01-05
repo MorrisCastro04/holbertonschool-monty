@@ -3,7 +3,8 @@
 /**
  * swap - swap two elements in the stack
  * @stack: double pointer to head of stack
- * @line_number
+ * @line_number: line number of opcode
+ * @fd: file descriptor
  * Return: return nothing
 */
 

@@ -3,7 +3,8 @@
 /**
  * add - adds two elemnents of the stack
  * @stack: double pointer to the head of stack
- * line_number: line number of opcode
+ * @line_number: line number of opcode
+ * @fd: file descriptor
  * Return: nothing
 */
 
