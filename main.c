@@ -5,47 +5,37 @@
  * @argv: argument vector
  * Return: if sucess 0 otherwise 1
  */
-char **tokens = NULL;
+
 int main(int argc, char **argv)
 {
-	int verification, line_number = 0;
-	char *cmd = NULL;
-	size_t buffer = 0;
 	FILE *fd;
-	void (*valid_fun)(stack_t **, unsigned int, FILE *) = NULL;
 	stack_t *stack = NULL;
+	char *line = NULL;
+	size_t len = 0;
+	unsigned int line_number = 0;
 
 	if (argc != 2)
 	{
-		dprintf(STDERR_FILENO, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+
 	fd = fopen(argv[1], "r");
+
 	if (fd == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((verification = getline(&cmd, &buffer, fd)) > -1)
+
+	while (getline(&line, &len, fd) > -1)
 	{
 		line_number++;
-		if (strcmp(cmd, "\n") == 0)
-			continue;
-		tokens = getTokens(cmd, " \n");
-		if (tokens == NULL)
-		{
-			free(tokens);
-			continue;
-		}
-		valid_fun = get_opcode(tokens[0]);
-		valid_fun(&stack, line_number, fd);
-		free(cmd);
-		freeTokens(tokens);
-		cmd = NULL;
-		tokens = NULL;
+		get_opcode(&stack, line, line_number);
 	}
-	free(cmd);
-	free_stack(stack);
 	fclose(fd);
+	free_stack(stack);
+	if (line)
+		free(line);
 	exit(EXIT_SUCCESS);
 }

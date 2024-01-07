@@ -16,7 +16,7 @@ char **getTokens(char *ptr, char *delim)
 	tokens = malloc(sizeof(char *) * 10);
 	if (tokens == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 	/*tokenize the input string*/
@@ -28,7 +28,7 @@ char **getTokens(char *ptr, char *delim)
 		tokens[i] = malloc(strlen(token) + 1);
 		if (tokens[i] == NULL)
 		{
-			dprintf(STDERR_FILENO, "Error: malloc failed");
+			fprintf(stderr, "Error: malloc failed");
 			exit(EXIT_FAILURE);
 		}
 		strcpy(tokens[i], token);
