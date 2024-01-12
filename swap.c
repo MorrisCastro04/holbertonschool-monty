@@ -4,11 +4,10 @@
  * swap - swap two elements in the stack
  * @stack: double pointer to head of stack
  * @line_number: line number of opcode
- * @fd: file descriptor
  * Return: return nothing
 */
 
-void swap(stack_t **stack, unsigned int line_number, FILE *fd)
+void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *second;
 
@@ -18,7 +17,6 @@ void swap(stack_t **stack, unsigned int line_number, FILE *fd)
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		fclose(fd);
 		exit(EXIT_FAILURE);
 	}
 

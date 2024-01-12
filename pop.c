@@ -4,11 +4,10 @@
  * pop - removes top node from stack
  * @stack: double pointer to head of stack
  * @line_number: line number of opcode
- * @fd: file descriptor
  * Return: nothing
 */
 
-void pop(stack_t **stack, unsigned int line_number, FILE *fd)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top;
 
@@ -16,12 +15,14 @@ void pop(stack_t **stack, unsigned int line_number, FILE *fd)
 
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		fclose(fd);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	*stack = (*stack)->next;
+
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
 
 	free(top);
 }

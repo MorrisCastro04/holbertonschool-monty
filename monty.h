@@ -1,13 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
-#include <string.h>
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-extern char **tokens;
+#include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
+#include <stdbool.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -34,19 +32,18 @@ struct stack_s *next;
 typedef struct instruction_s
 {
 char *opcode;
-void (*f)(stack_t **stack, unsigned int line_number, FILE *);
+void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 void free_stack(stack_t *stack);
-void freeTokens(char **);
-char **getTokens(char *, char *);
-void (*get_opcode(char *cmd))(stack_t **, unsigned int, FILE *);
-void push(stack_t **stack, unsigned int line_number, FILE *fd);
-void pall(stack_t **stack, unsigned int line_number, FILE *fd);
-void pint(stack_t **stack, unsigned int line_number, FILE *fd);
-void pop(stack_t **stack, unsigned int line_number, FILE *fd);
-void swap(stack_t **stack, unsigned int line_number, FILE *fd);
-void add(stack_t **stack, unsigned int line_number, FILE *fd);
-void nop(stack_t **stack, unsigned int line_number, FILE *fd);
+int Integer_check(const char *str);
+void get_opcode(stack_t **stack, char *line, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 
 #endif
