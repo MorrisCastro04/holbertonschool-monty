@@ -6,6 +6,7 @@
  * Return: if sucess 0 otherwise 1
  */
 char **tokens = NULL;
+
 int main(int argc, char **argv)
 {
 	int verification, line_number = 0;
