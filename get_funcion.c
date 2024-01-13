@@ -8,7 +8,7 @@
  */
 void get_opcode(stack_t **stack, char *line, unsigned int line_number)
 {
-	char *cmd = strtok(line, " \t\n");
+	char *cmd = strtok(line, " \t\n$");
 	int i;
 	
 	if (!stack)
@@ -30,7 +30,7 @@ void get_opcode(stack_t **stack, char *line, unsigned int line_number)
 		{
 			if (!strcmp(cmd, "push"))
 			{
-				char *arg = strtok(NULL, " \t\n");
+				char *arg = strtok(NULL, " \t\n$");
 
 				if (!Integer_check(arg))
 				{
