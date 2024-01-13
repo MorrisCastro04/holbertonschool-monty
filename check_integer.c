@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
-* isInteger - Check if a string is a valid integer.
+* Integer_check - Check if a string is a valid integer.
 * @str: The input string to be checked.
 * Return: 1 if @str is a valid integer, 0 otherwise.
 */

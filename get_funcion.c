@@ -10,7 +10,7 @@ void get_opcode(stack_t **stack, char *line, unsigned int line_number)
 {
 	char *cmd = strtok(line, " \t\n$");
 	int i;
-	
+
 	if (!cmd)
 		return;
 
