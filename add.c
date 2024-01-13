@@ -9,20 +9,20 @@
 
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top, *second;
+	stack_t *temp;
 	int sum;
-
-	top = *stack;
-	second = (*stack)->next;
-	sum = top->n + second->n;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	sum = (*stack)->n + (*stack)->next->n;
 
-	second->n = sum;
-	*stack = second;
-	free(top);
+	temp = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+
+	(*stack)->n = sum;
+	free(temp);
 }
